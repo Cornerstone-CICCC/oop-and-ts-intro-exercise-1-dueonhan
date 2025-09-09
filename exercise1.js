@@ -4,8 +4,45 @@
 
 class Car {
   // YOUR CODE HERE
-}
+  static counter = 0;
+  #id;
+  #year;
 
+  constructor(make, model, year) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+    Car.counter++;
+    this.#id = Car.counter;
+    console.log(Car.counter);
+  }
+
+  getCarInfo() {
+    return {
+      id: this.#id,
+      make: this.make,
+      model: this.model,
+      year: this.year,
+    };
+  }
+
+  getYear() {
+    return this.#year;
+  }
+  get year() {
+    return this.#year;
+  }
+
+  setYear(newyear) {
+    if (newyear >= this.#year) {
+      this.#year = newyear;
+    }
+  }
+
+  set year(year) {
+    this.#year = year;
+  }
+}
 
 // TEST CASE / DRIVER CODE
 const car1 = new Car("Toyota", "Corolla", 2010);
